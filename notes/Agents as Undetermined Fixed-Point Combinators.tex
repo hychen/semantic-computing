@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{mathrsfs}
+\usepackage{upgreek}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\geometry{margin=1in}
+
+\title{\textbf{Agents as Undetermined Fixed-Point Combinators:\\
+A HoTT-Theoretic Note}}
+\author{Hsin-Yi Chen\\SlashLife AI}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note presents a universe-level formalization of agents as
+undetermined fixed-point combinators.
+The model is developed within the setting of Homotopy Type Theory (HoTT),
+treating agents not as predefined computational objects but
+as semantic structures determined by their task composition,
+pragmatic grafting, recursive state, and an externally exposed universe endofunctor.
+The resulting definition provides a minimal and purely structural foundation
+for agents independent of specific representational or computational paradigms.
+\end{abstract}
+
+\section{Introduction}
+
+The aim of this note is to provide a minimal, structural
+and universe-level formulation of agents grounded in the semantics of
+Homotopy Type Theory (HoTT).
+Rather than assuming a fixed computational model,
+the construction isolates four components:
+
+\begin{enumerate}[label=(\alph*)]
+    \item a \emph{task structure} $T$,
+    \item a \emph{graft structure} $G$ expressing contextual and pragmatic attachment,
+    \item a \emph{recursive agent state} $X$, and
+    \item an \emph{undetermined universe endofunctor} $\nabla$.
+\end{enumerate}
+
+The essence of the proposal is that an agent is the minimal fixed point
+arising from the interaction of these four components.
+The formulation is independent of specific representations,
+logical formalisms or computational mechanisms.
+It is intended as an abstract semantic scaffold that can host
+heterogeneous instantiations, including linguistic, social,
+procedural or physical variants of agency.
+
+\section{Preliminaries}
+
+We assume a univalent universe $\mathcal{U}$ of types.
+For any $u \in \mathcal{U}$ we write $T(u)$ for a task-structural type
+depending on $u$, and $G(u)$ for a graft-structural type depending on $u$.
+
+\begin{definition}[Universe Endofunctor]
+An \emph{undetermined universe endofunctor} is a map
+\[
+\nabla : \mathcal{U} \to \mathcal{U},
+\]
+with no assumptions on internal structure other than closure in $\mathcal{U}$.
+\end{definition}
+
+Intuitively, $\nabla(u)$ represents an externally exposed semantic expansion
+of $u$, without prescribing how such expansion is generated.
+This makes the construction fully agnostic with respect to 
+representational, linguistic or physical interpretations.
+
+\section{Combinatorial Construction}
+
+We introduce a four-argument combinator
+\[
+C : \mathcal{U}^4 \to \mathcal{U},
+\]
+where
+\[
+C(T, G, X, Y)
+\]
+combines task structure, graft structure, recursive state 
+and an external universe component.
+
+\begin{definition}[Agent as Undetermined Fixed Point]
+\label{def:agent}
+An \emph{agent} is defined as the dependent fixed point
+\[
+\mathrm{Agent} 
+:= 
+\mu X:\mathcal{U}.\;
+C\big(T(X),\, G(X),\, X,\, \nabla(X)\big).
+\]
+\end{definition}
+
+This definition is universe-level:
+$X$ ranges over $\mathcal{U}$, and the construction
+selects the smallest solution of the dependent equation.
+The fixed point is “undetermined’’ in the sense that
+$\nabla$ is arbitrary, and may represent any external trigger,
+semantic perturbation or universe extension.
+
+\subsection{Interpretation}
+
+The definition yields four interacting layers:
+
+\begin{itemize}
+    \item $T(X)$ encodes obligations, decompositions and procedural structure
+          dependent on the agent's own state.
+    \item $G(X)$ provides pragmatic anchoring, capturing contextual,
+          cultural or linguistic grafts on $X$.
+    \item $X$ contributes the recursive self-modeling needed for persistence.
+    \item $\nabla(X)$ denotes an external universe-level perturbation
+          affecting $X$, with no constraints on modality or mechanism.
+\end{itemize}
+
+Thus, the fixed point expresses the minimal semantic object
+capable of sustaining the interaction of these components.
+
+\section{Properties}
+
+\begin{proposition}[Universality]
+Any structure admitting task, graft, recursive and external components
+can be embedded into an instance of Definition~\ref{def:agent}.
+\end{proposition}
+
+\begin{proposition}[Agnosticism]
+The construction does not assume a specific logic, representation,
+reasoning method, medium or computational substrate.
+All such choices are pushed into $T$, $G$ and $\nabla$.
+\end{proposition}
+
+\begin{proposition}[Stability]
+If $\nabla$ preserves equivalences in $\mathcal{U}$,
+then the agent fixed point is stable under univalent identification.
+\end{proposition}
+
+These properties reflect the goal of providing a minimal 
+HoTT-theoretic basis for semantic agency.
+
+\section{Discussion}
+
+The use of $\nabla$ is essential.
+By abstracting external semantic influence to an endofunctor,
+the definition avoids premature commitments to 
+syntactic, symbolic or physical mechanisms.
+Similarly, graft structure $G$ isolates pragmatic dependence:
+context, convention and interpretation do not pollute 
+the task structure itself.
+
+The model simultaneously admits:
+
+\begin{itemize}
+    \item linguistic interpretations,
+    \item procedural interpretations,
+    \item logical interpretations,
+    \item physical or dynamical interpretations.
+\end{itemize}
+
+These arise by instantiating $T$, $G$ and $\nabla$ appropriately.
+
+\section{Conclusion}
+
+This note has presented a universe-level formulation of agents
+as undetermined fixed-point combinators.
+The model is intentionally minimal, abstract
+and independent of any specific representational or computational paradigm.
+Its purpose is to provide a semantic scaffold for further development,
+including possible elaborations involving 
+lifecycle operators, narrative structures,
+attestation layers or pathway types.
+
+\bibliographystyle{plain}
+\begin{thebibliography}{9}
+
+\bibitem{hott}
+The Univalent Foundations Program.
+\emph{Homotopy Type Theory: Univalent Foundations of Mathematics}, 2013.
+
+\bibitem{awodey}
+Awodey, S.
+\emph{Category Theory}, Oxford University Press.
+
+\end{thebibliography}
+
+\end{document}
